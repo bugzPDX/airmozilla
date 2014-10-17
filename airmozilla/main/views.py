@@ -873,7 +873,8 @@ def events_calendar_ical(request, privacy=None):
     for event in events:
         vevent = cal.add('vevent')
         vevent.add('summary').value = event.title
-        vevent.add('dtstart').value = event.start_time
+        vevent.add('dtstart').value = (event.start_time -
+                                       datetime.timedelta(minutes=30))
         vevent.add('dtend').value = (event.start_time +
                                      datetime.timedelta(hours=1))
         vevent.add('description').value = short_desc(event, strip_html=True)
