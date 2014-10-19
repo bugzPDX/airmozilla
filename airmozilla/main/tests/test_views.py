@@ -525,6 +525,17 @@ class TestPages(DjangoTestCase):
         response_private = self.client.get(url)
         ok_(dtstart in response_private.content)
 
+    def test_calendar_dtend(self):
+        event = Event.objects.get(title='Test event')
+        dtend = event.start_time + datetime.timedelta(hours=1)
+        dtend = dtend.strftime("DTEND:%Y%m%dT%H%M%SZ")
+        url = self._calendar_url('public')
+        response_public = self.client.get(url)
+        ok_(dtend in response_public.content)
+        url = self._calendar_url('company')
+        response_private = self.client.get(url)
+        ok_(dtend in response_private.content)
+
     def test_calendar_ical_cors_cached(self):
         url = self._calendar_url('public')
         response_public = self.client.get(url)
