@@ -876,12 +876,10 @@ def events_calendar_ical(request, privacy=None):
         # Adjusted start times for Event Assignment iCal feeds
         # to allow staff sufficient time for event set-up.
         vevent.add('dtstart').value = (
-            event.start_time -
-        datetime.timedelta(minutes=30)
+            event.start_time - datetime.timedelta(minutes=30)
         )
         vevent.add('dtend').value = (
-            event.start_time +
-        datetime.timedelta(hours=1)
+            event.start_time + datetime.timedelta(hours=1)
         )
         vevent.add('description').value = short_desc(event, strip_html=True)
         if event.location:
