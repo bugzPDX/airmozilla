@@ -12,10 +12,13 @@ Starred Events | {{ super() }}
 {% if events %}
     {% include 'starred/events.html' %}
 {% else %}
-    <p class="has-stars">Please wait. Loading your starred events...</p>
+    <p >You have no starred events. Yet.</p>
 {% endif %}
 </div>
-    <p class="no-stars" style="display:none">You have no starred events. Yet.</p>
+<div style="display:none">
+    <p class="no-stars">You have no starred events. Yet.</p>
+    <p class="load-stars">Please wait. Loading your starred events...</p>
+</div>
 {% endblock %}
 
 {% block site_js %}

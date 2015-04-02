@@ -4,7 +4,7 @@ var EventLoader = (function() {
         load: function() {
             var stars = Stars.getStars();
             if (stars.length === 0) {
-                container.html($( '.no-stars' ).clone().toggleClass('no-stars').show());
+                container.html($( '.no-stars' ).clone().toggleClass('no-stars'));
             }
             else {
                 var url = window.location.pathname;
@@ -19,6 +19,7 @@ var EventLoader = (function() {
 
 $(function() {
     if (!Stars.isSignedIn()) {
+        container.html($( '.load-stars' ).clone().toggleClass('load-stars'));
         EventLoader.load();
     }
     Stars.registerPostSync(EventLoader.load);
