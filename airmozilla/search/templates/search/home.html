@@ -92,7 +92,10 @@
 
           <a class="go" href="{{ href }}">{{ _('See more') }}</a>
         </p>
-        <a class="star" data-id="{{ event.id }}" title="Save as a starred event"></a>
+        <a class="star" data-id="{{ event.id }}"
+            data-ttOn="Remove starred event"
+            data-ttOff="Save as a starred event"
+            ></a>
       </div>
     </article>
   {% else %}

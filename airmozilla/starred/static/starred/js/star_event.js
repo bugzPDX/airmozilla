@@ -35,6 +35,7 @@ var Stars = (function() {
                 if (index > -1) {
                     $element.addClass('star-on');
                 }
+                Stars.setToolTip(element);
             });
         }
 
@@ -91,6 +92,18 @@ var Stars = (function() {
             stars = stars.slice(0, 500);
             localStorage.setItem('stars', JSON.stringify(stars));
             sync();
+        },
+
+        setToolTip: function (element) {
+            var title;
+            var $element = $(element);
+                console.log($element);
+            if ($element.hasClass('star-on')) {
+                title = $element.data('ttOn');
+            } else {
+                title = $element.data('ttOff');
+            }
+            $element.attr('title', title);
         }
     };
 }());
@@ -99,7 +112,10 @@ $(function() {
 
     $('#content').on('click', 'a.star', function () {
         var id = $(this).data('id');
-        $('a.star[data-id=' + id + ']').toggleClass('star-on');
+        $('a.star[data-id=' + id + ']').each(function(i, element) {
+            $(element).toggleClass('star-on');
+            Stars.setToolTip(element);
+        });
         Stars.toggleArrayPresence(id);
     });
 

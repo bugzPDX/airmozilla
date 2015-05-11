@@ -90,7 +90,10 @@
      <header class="entry-header">
       <h1 class="entry-title">
         {{ event.title }}
-      <a class="star event" data-id="{{ event.id }}" title="Save as a starred event"></a>
+      <a class="star event" data-id="{{ event.id }}"
+          data-ttOn="Remove starred event"
+          data-ttOff="Save as a starred event"
+          ></a>
       </h1>
 
       {% if event.is_upcoming() %}
