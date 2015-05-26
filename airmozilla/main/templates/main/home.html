@@ -33,10 +33,7 @@ p.feed { float: right; }
         <a href="{{ href }}">
           {{ show_thumbnail(live, '160x90') }}
         </a>
-        <a class="star live" data-id="{{ event.id }}"
-            data-ttOn="Remove starred event"
-            data-ttOff="Save as a starred event"
-            ></a>
+        {{ star_tag(event.id, "live")|safe }}
         <p>{{ short_desc(live, 16) | safe_html }}
         <a class="go" href="{{ href }}">{{_('See more') }}</a></p>
         <p class="watch"><a class="button" href="{{ href }}">

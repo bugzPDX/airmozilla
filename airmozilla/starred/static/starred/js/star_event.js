@@ -97,11 +97,10 @@ var Stars = (function() {
         setToolTip: function (element) {
             var title;
             var $element = $(element);
-                console.log($element);
             if ($element.hasClass('star-on')) {
-                title = $element.data('ttOn');
+                title = $element.data('star-on');
             } else {
-                title = $element.data('ttOff');
+                title = $element.data('star-off');
             }
             $element.attr('title', title);
         }
@@ -112,9 +111,10 @@ $(function() {
 
     $('#content').on('click', 'a.star', function () {
         var id = $(this).data('id');
-        $('a.star[data-id=' + id + ']').each(function(i, element) {
-            $(element).toggleClass('star-on');
-            Stars.setToolTip(element);
+        var modified = $('a.star[data-id=' + id + ']');
+        modified.toggleClass('star-on');
+        modified.each(function(i,e) {
+            Stars.setToolTip(e);
         });
         Stars.toggleArrayPresence(id);
     });

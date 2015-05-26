@@ -20,8 +20,8 @@
     </a>
 
     <a class="star{% if star_on %} star-on{% endif %}" data-id="{{ event.id }}" 
-        data-ttOn="Remove starred event"
-        data-ttOff="Save as a starred event"
+        data-star-on="Remove star"
+        data-star-off="Save as a starred event"
         ></a>
     <p>
       {{ short_desc(event) | safe_html }}

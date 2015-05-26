@@ -92,10 +92,7 @@
 
           <a class="go" href="{{ href }}">{{ _('See more') }}</a>
         </p>
-        <a class="star" data-id="{{ event.id }}"
-            data-ttOn="Remove starred event"
-            data-ttOff="Save as a starred event"
-            ></a>
+        {{ star_tag(event.id)|safe }}
       </div>
     </article>
   {% else %}
